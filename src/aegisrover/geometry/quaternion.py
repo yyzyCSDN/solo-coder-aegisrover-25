@@ -26,4 +26,4 @@ def from_yaw(yaw):
 
 def to_yaw(q):
     w, x, y, z = normalize(q)
-    return math.atan2(1 - 2 * (y * y + z * z), 2 * (w * z + x * y))
+    return math.atan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z))

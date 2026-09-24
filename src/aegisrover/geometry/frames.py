@@ -10,7 +10,7 @@ def inverse(p: Pose2) -> Pose2:
     c = math.cos(p.yaw)
     s = math.sin(p.yaw)
     x = -(c * p.x + s * p.y)
-    y = -s * p.x + c * p.y
+    y = s * p.x - c * p.y
     return Pose2(x, y, wrap_angle(-p.yaw))
 
 def transform_point(frame: Pose2, point: Vec2) -> Vec2:
