@@ -25,5 +25,6 @@ def from_yaw(yaw):
     return (math.cos(yaw / 2), 0.0, 0.0, math.sin(yaw / 2))
 
 def to_yaw(q):
+    """Extract yaw for the Hamilton convention used by ``from_yaw``/``rotate``."""
     w, x, y, z = normalize(q)
-    return math.atan2(1 - 2 * (y * y + z * z), 2 * (w * z + x * y))
+    return math.atan2(2 * (w * z + x * y), 1 - 2 * (y * y + z * z))

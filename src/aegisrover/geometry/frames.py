@@ -7,10 +7,11 @@ def compose(a: Pose2, b: Pose2) -> Pose2:
     return Pose2(a.x + c * b.x - s * b.y, a.y + s * b.x + c * b.y, wrap_angle(a.yaw + b.yaw))
 
 def inverse(p: Pose2) -> Pose2:
+    """Inverse of a child pose expressed in its parent frame."""
     c = math.cos(p.yaw)
     s = math.sin(p.yaw)
     x = -(c * p.x + s * p.y)
-    y = -s * p.x + c * p.y
+    y = s * p.x - c * p.y
     return Pose2(x, y, wrap_angle(-p.yaw))
 
 def transform_point(frame: Pose2, point: Vec2) -> Vec2:
